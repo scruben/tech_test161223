@@ -39,8 +39,10 @@ describe('main', function () {
     main.should.be.a('function');
   });
 
-  it('should return -1 if empty array', function () {
+  it('should return -1 if empty array, not found any, or all equal - cases where it is not possible to cut', function () {
     main(0,[]).should.eql(-1);
+    main(7,[5,5,5,5,5,5]).should.eql(-1); // All non equal, not found
+    main(5,[5,5,5,5,5,5]).should.eql(-1); // All equal
   });
 
   it('should return the index where to split if has a solution', function () {
@@ -49,8 +51,6 @@ describe('main', function () {
     main(5,[5,2,5,5,5,7]).should.eql(2); // slighly asymetrical
     main(5,[5,5,5,5,5,7]).should.eql(1); // highly asymetrical
     main(7,[5,2,5,5,5,7]).should.eql(5); // 0-0 case
-    main(5,[5,5,5,5,5,5]).should.eql(0); // All equal
-    main(7,[5,5,5,5,5,5]).should.eql(0); // All non equal
   });
 
 });

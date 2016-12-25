@@ -8,8 +8,10 @@ function main (number, list_numbers) {
   for (let i = 0; i < list_numbers.length; i++) {
     if (list_numbers[i] === number) totalNumber++;
   }
-  // if no matches we cannot split
-  if (totalNumber === 0) return 0;
+  
+  // if no matches or all match and we cannot split
+  if (totalNumber === 0) return -1;
+  if (totalNumber === list_numbers.length) return -1;
 
   // start looking on the right side for the position where
   // the number of no equals to number is the same to the equals
